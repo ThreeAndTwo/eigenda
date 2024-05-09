@@ -18,6 +18,8 @@ type Config struct {
 	LoggingConfig          common.LoggerConfig
 	RandomizeBlobs         bool
 	InstanceLaunchInterval time.Duration
+
+	SignerPrivateKey string
 }
 
 func NewConfig(ctx *cli.Context) (*Config, error) {
@@ -38,5 +40,6 @@ func NewConfig(ctx *cli.Context) (*Config, error) {
 		LoggingConfig:          *loggerConfig,
 		RandomizeBlobs:         ctx.GlobalBool(flags.RandomizeBlobsFlag.Name),
 		InstanceLaunchInterval: ctx.Duration(flags.InstanceLaunchIntervalFlag.Name),
+		SignerPrivateKey:       ctx.String(flags.SignerPrivateKeyFlag.Name),
 	}, nil
 }

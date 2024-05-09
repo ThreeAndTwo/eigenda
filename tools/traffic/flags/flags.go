@@ -72,6 +72,12 @@ var (
 		Required: false,
 		EnvVar:   common.PrefixEnvVar(envPrefix, "USE_SECURE_GRPC"),
 	}
+	SignerPrivateKeyFlag = cli.StringFlag{
+		Name:     common.PrefixFlag(FlagPrefix, "signer-private-key-hex"),
+		Usage:    "Path to the private key file",
+		Required: true,
+		EnvVar:   common.PrefixEnvVar(envPrefix, "SIGNER_PRIVATE_KEY_HEX"),
+	}
 )
 
 var requiredFlags = []cli.Flag{
@@ -87,6 +93,7 @@ var optionalFlags = []cli.Flag{
 	RandomizeBlobsFlag,
 	InstanceLaunchIntervalFlag,
 	UseSecureGrpcFlag,
+	SignerPrivateKeyFlag,
 }
 
 // Flags contains the list of configuration options available to the binary.
